@@ -6,6 +6,6 @@ namespace ContosoCore.Interfaces
 {
     public interface IMetricsService : IContosoService
     {
-        Task<List<Metric>> GetListAsync(int id);
+        Task<List<Metric>> GetListForCustomerId(int id);
     }
 }

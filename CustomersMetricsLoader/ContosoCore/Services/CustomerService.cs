@@ -23,7 +23,6 @@ namespace ContosoCore.Services
         public async Task<List<Customer>> GetListAsync()
         {
             var list = await _client.GetStringAsync(_endPoint);
-
             return JsonConvert.DeserializeObject<List<Customer>>(list);
         }
 

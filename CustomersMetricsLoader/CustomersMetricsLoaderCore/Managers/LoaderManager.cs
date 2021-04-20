@@ -7,7 +7,6 @@ namespace ContosoCore.Managers
 {
     public class LoaderManager : ILoaderManager
     {
-
         private readonly ILogger _logger;
         private readonly ICustomerService _customerService;
         private readonly IMetricsService _metricsService;
@@ -31,7 +30,7 @@ namespace ContosoCore.Managers
                 Console.WriteLine(customer.name);
             }
 
-            var metrics = await _metricsService.GetListAsync(1);
+            var metrics = await _metricsService.GetListForCustomerId(1);
 
             Console.WriteLine("--- Metrics ---");
             foreach (var metric in metrics)

@@ -21,7 +21,7 @@ namespace ContosoCore.Services
             _endPoint = config["SonarApi:MetricsEndpoint"];
         }
 
-        public async Task<List<Metric>> GetListAsync(int id)
+        public async Task<List<Metric>> GetListForCustomerId(int id)
         {
             var list = await _client.GetStringAsync($"{_endPoint}?customer_id={id}");
 
