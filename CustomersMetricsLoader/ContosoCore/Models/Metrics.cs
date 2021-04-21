@@ -1,7 +1,11 @@
-﻿namespace ContosoCore.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ContosoCore.Models
 {
-    public class Metric
+    public partial class Metrics
     {
+        [Key]
+        public int RowId { get; set; }
         public int customer_id { get; set; }
         public int id { get; set; }
         public string name { get; set; }

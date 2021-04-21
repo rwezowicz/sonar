@@ -1,7 +1,13 @@
-﻿namespace ContosoCore.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace ContosoCore.Models
 {
-    public class Customer
+    [Table("Customers")]
+    public partial class Customer
     {
+        [Key]
+        public int RowId { get; set; }
         public int id { get; set; }
         public string name { get; set; }
         public string representative { get; set; }

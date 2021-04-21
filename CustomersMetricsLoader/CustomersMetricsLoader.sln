@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomersMetricsLoader", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ContosoCore", "ContosoCore\ContosoCore.csproj", "{05A98F0E-0661-4F95-9444-87CD8373D027}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomersMetricsLoaderCore", "CustomersMetricsLoaderCore\CustomersMetricsLoaderCore.csproj", "{A6CF5CD6-3848-4288-A8E8-38D3383E4556}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomersMetricsLoaderTests", "CustomersMetricsLoaderTests\CustomersMetricsLoaderTests.csproj", "{79A544DA-1B97-4C36-86B3-D5A71A02E97B}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CustomersMetricsDatabase", "CustomersMetricsDatabase\CustomersMetricsDatabase.sqlproj", "{72623BC8-B650-4241-922A-AC5074836360}"
@@ -27,10 +25,6 @@ Global
 		{05A98F0E-0661-4F95-9444-87CD8373D027}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05A98F0E-0661-4F95-9444-87CD8373D027}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05A98F0E-0661-4F95-9444-87CD8373D027}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A6CF5CD6-3848-4288-A8E8-38D3383E4556}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A6CF5CD6-3848-4288-A8E8-38D3383E4556}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A6CF5CD6-3848-4288-A8E8-38D3383E4556}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A6CF5CD6-3848-4288-A8E8-38D3383E4556}.Release|Any CPU.Build.0 = Release|Any CPU
 		{79A544DA-1B97-4C36-86B3-D5A71A02E97B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{79A544DA-1B97-4C36-86B3-D5A71A02E97B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79A544DA-1B97-4C36-86B3-D5A71A02E97B}.Release|Any CPU.ActiveCfg = Release|Any CPU

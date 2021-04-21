@@ -25,7 +25,7 @@ namespace CustomersMetricsLoaderTests.StepDefinitions
         [Given(@"I have a list of metrics data")]
         public void GivenIHaveAListOfMetricsData(Table table)
         {
-            var metric = table.CreateSet<Metric>().ToList();
+            var metric = table.CreateSet<Metrics>().ToList();
 
             _scenarioContext["InitialMetric"] = metric;
         }
@@ -33,7 +33,7 @@ namespace CustomersMetricsLoaderTests.StepDefinitions
         [Given(@"I have a metrics service")]
         public void GivenIHaveAMetricsService()
         {
-            var metric = _scenarioContext.Get<List<Metric>>("InitialMetric");
+            var metric = _scenarioContext.Get<List<Metrics>>("InitialMetric");
             var client = TestHelpers.GenerateHttpClientMock(metric);
             var config = _scenarioContext.Get<IConfigurationRoot>("TestConfiguration");
             _scenarioContext["MetricsService"] = new MetricsService(client, config);
@@ -50,9 +50,9 @@ namespace CustomersMetricsLoaderTests.StepDefinitions
         [Then(@"the following metric is returned")]
         public void ThenTheFollowingMetricIsReturned(Table table)
         {
-            var retrievedMetricList = _scenarioContext.Get<List<Metric>>("RetrievedMetricListForCustomer");
+            var retrievedMetricList = _scenarioContext.Get<List<Metrics>>("RetrievedMetricListForCustomer");
 
-            var expectedMetricList = table.CreateSet<Metric>().ToList();
+            var expectedMetricList = table.CreateSet<Metrics>().ToList();
 
             Assert.That(retrievedMetricList[0].id == expectedMetricList[0].id);
             Assert.That(expectedMetricList.First().id == retrievedMetricList[0].id);

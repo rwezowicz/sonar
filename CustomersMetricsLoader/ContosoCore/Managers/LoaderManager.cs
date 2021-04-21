@@ -22,6 +22,41 @@ namespace ContosoCore.Managers
             _metricsService = metricsService;
         }
 
+        public async Task Run()
+        {
+            _logger.LogInformation($"LoaderManager Started at {DateTime.UtcNow}");
+
+            var customers = await _customerService.GetListAsync();
+
+            Console.WriteLine("--- Customers ---");
+            foreach (var customer in customers)
+            {
+                Console.WriteLine(customer.name);
+            }
+
+            var metrics = await _metricsService.GetListForCustomerId(1);
+
+            Console.WriteLine("--- Metrics ---");
+            foreach (var metric in metrics)
+            {
+                Console.WriteLine(metric.name);
+            }
+
+            Console.ReadKey();
+
+            _logger.LogInformation($"LoaderManager Completed at {DateTime.UtcNow}");
+        }
+
+        public async Task<List<Customer>> GetAllCustomers()
+        {
+            return await _customerService.GetListAsync();
+        }
+
+        public async Task<List<Metrics>> GetMetricsListForCustomerId(int id)
+        {
+            return await _metricsService.GetListForCustomerId(id);
+        }
+
         public async Task SaveAllCustomers(List<Customer> customers)
         {
             try

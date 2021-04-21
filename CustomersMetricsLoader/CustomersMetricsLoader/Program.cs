@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using ContosoCore.Managers;
-using ContosoCore.Services;
+using CustomersMetricsLoader.Runners;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CustomersMetricsLoader
@@ -19,13 +19,15 @@ namespace CustomersMetricsLoader
 
             try
             {
-                var service = serviceProvider.GetService<LoaderManager>();
-                await service.Run();
+                var runner = serviceProvider.GetService<LoaderRunner>();
+                await runner.Run();
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Error Occurred {ex}");
             }
+
+            Console.ReadKey();
         }
     }
 }

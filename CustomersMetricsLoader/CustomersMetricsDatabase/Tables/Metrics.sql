@@ -1,7 +1,8 @@
 ﻿CREATE TABLE [dbo].[Metrics]
 (
-	[id] INT NOT NULL PRIMARY KEY,
-	[customer_Id] INT NOT NULL,
-	[name] VARCHAR(50) NOT NULL,
-	[expression] VARCHAR(50) NOT NULL
+	[RowId] INT NOT NULL PRIMARY KEY IDENTITY,
+	[id] INT NOT NULL, 
+	[customer_id] INT NOT NULL,
+	[name] VARCHAR(max) NOT NULL,
+	[expression] VARCHAR(max) NOT NULL
 )

@@ -1,6 +1,10 @@
 ﻿using System;
+using ContosoCore.Context;
+using ContosoCore.Interfaces;
 using ContosoCore.Managers;
 using ContosoCore.Services;
+using CustomersMetricsLoader.Runners;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -23,6 +27,11 @@ namespace CustomersMetricsLoader
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<CustomersMetricsDatabaseContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("Default"));
+            });
+
             services.AddLogging(config =>
             {
                 config.AddConfiguration(Configuration.GetSection("Logging"));
@@ -42,7 +51,9 @@ namespace CustomersMetricsLoader
 
             services.AddScoped(MetricsService.GetImplementation);
 
-            services.AddTransient<LoaderManager>();
+            services.AddScoped<ILoaderManager, LoaderManager>();
+
+            services.AddScoped<LoaderRunner>();
         }
     }
 }

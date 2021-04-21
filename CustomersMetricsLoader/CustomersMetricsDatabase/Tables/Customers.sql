@@ -1,8 +1,9 @@
 ﻿CREATE TABLE [dbo].[Customers]
 (
-	[id] INT NOT NULL PRIMARY KEY, 
-    [name] VARCHAR(50) NULL, 
-    [representative] VARCHAR(50), 
-    [representative_email] VARCHAR(50), 
-    [representative_phone] VARCHAR(50)
+    [RowId] INT NOT NULL PRIMARY KEY IDENTITY,
+	[id] INT NOT NULL, 
+    [name] VARCHAR(max) NOT NULL, 
+    [representative] VARCHAR(max) NOT NULL, 
+    [representative_email] VARCHAR(max) NOT NULL, 
+    [representative_phone] VARCHAR(max) NOT NULL
 )
