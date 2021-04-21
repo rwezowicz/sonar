@@ -24,12 +24,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ContosoCore\ContosoCore.csproj" />
+    <ProjectReference Include="..\CustomersMetricsLoader\CustomersMetricsLoader.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Features\Common.feature.cs">
-      <DependentUpon>Common.feature</DependentUpon>
-    </Compile>
     <Compile Update="Features\LoaderRunner.feature.cs">
       <DependentUpon>LoaderRunner.feature</DependentUpon>
     </Compile>
@@ -39,10 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <SpecFlowFeatureFiles Update="Features\Common.feature">
-      <Visible>$(UsingMicrosoftNETSdk)</Visible>
-      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
-    </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\LoaderRunner.feature">
       <Visible>$(UsingMicrosoftNETSdk)</Visible>
       <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>

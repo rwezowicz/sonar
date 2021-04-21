@@ -4,7 +4,7 @@ using ContosoCore.Models;
 
 namespace ContosoCore.Interfaces
 {
-    public interface ICustomerService : IContosoService
+    public interface ICustomerService
     {
         Task<List<Customer>> GetListAsync();
     }

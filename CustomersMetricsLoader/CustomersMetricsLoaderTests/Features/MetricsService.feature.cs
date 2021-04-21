@@ -74,15 +74,13 @@ namespace CustomersMetricsLoaderTests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Confirm Successful Request for Metrics Service Data")]
-        [NUnit.Framework.CategoryAttribute("unittest")]
-        public virtual void ConfirmSuccessfulRequestForMetricsServiceData()
+        [NUnit.Framework.DescriptionAttribute("Confirm Successful Request for Metrics Service Data from API")]
+        public virtual void ConfirmSuccessfulRequestForMetricsServiceDataFromAPI()
         {
-            string[] tagsOfScenario = new string[] {
-                    "unittest"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Confirm Successful Request for Metrics Service Data", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 5
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Confirm Successful Request for Metrics Service Data from API", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -102,37 +100,37 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table28 = new TechTalk.SpecFlow.Table(new string[] {
                             "customer_id",
                             "id",
                             "name",
                             "expression"});
-                table20.AddRow(new string[] {
+                table28.AddRow(new string[] {
                             "1",
                             "1",
                             "name",
                             "expression"});
-#line 6
- testRunner.Given("I have a list of metrics data", ((string)(null)), table20, "Given ");
+#line 5
+ testRunner.Given("I have an api that will return the following list of metrics data", ((string)(null)), table28, "Given ");
 #line hidden
-#line 9
+#line 8
  testRunner.And("I have a metrics service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 10
+#line 9
  testRunner.When("I request a list of metrics data for customer_id 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table29 = new TechTalk.SpecFlow.Table(new string[] {
                             "customer_id",
                             "id",
                             "name",
                             "expression"});
-                table21.AddRow(new string[] {
+                table29.AddRow(new string[] {
                             "1",
                             "1",
                             "name",
                             "expression"});
-#line 11
- testRunner.Then("the following metric is returned", ((string)(null)), table21, "Then ");
+#line 10
+ testRunner.Then("the api returns the following metric is returned", ((string)(null)), table29, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -140,14 +138,12 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Retrieve an implementation of IMetricsService")]
-        [NUnit.Framework.CategoryAttribute("unittest")]
         public virtual void RetrieveAnImplementationOfIMetricsService()
         {
-            string[] tagsOfScenario = new string[] {
-                    "unittest"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve an implementation of IMetricsService", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 16
+#line 14
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -167,13 +163,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 17
+#line 15
  testRunner.Given("I have a service collection", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 18
+#line 16
  testRunner.When("I request an implementation of ICustomerIMetricsServiceService", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 19
+#line 17
  testRunner.Then("I receive a MetricsService object", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

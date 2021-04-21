@@ -7,7 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using NUnit.Framework;
 using TechTalk.SpecFlow;
-using TechTalk.SpecFlow.Assist;
 
 namespace CustomersMetricsLoaderTests.StepDefinitions
 {
@@ -21,18 +20,10 @@ namespace CustomersMetricsLoaderTests.StepDefinitions
             _scenarioContext = scenarioContext;
         }
 
-        [Given(@"I have a list of customer data")]
-        public void GivenIHaveAListOfCustomerData(Table table)
-        {
-            var customerList = table.CreateSet<Customer>();
-
-            _scenarioContext["InitialCustomerList"] = customerList;
-        }
-
         [Given(@"I have a customer service")]
         public void GivenIHaveACustomerService()
         {
-            var customerList = _scenarioContext.Get<List<Customer>>("InitialCustomerList");
+            var customerList = _scenarioContext.Get<List<Customer>>("ApiCustomerList");
             var client = TestHelpers.GenerateHttpClientMock(customerList);
             var config = _scenarioContext.Get<IConfigurationRoot>("TestConfiguration");
             _scenarioContext["CustomerService"] = new CustomerService(client, config);
@@ -46,12 +37,12 @@ namespace CustomersMetricsLoaderTests.StepDefinitions
             _scenarioContext["RetrievedCustomerList"] = customerList;
         }
 
-        [Then(@"my entire customer data list is returns")]
-        public void ThenMyEntireCustomerDataListIsReturns()
+        [Then(@"the api returns an entire customer data list")]
+        public void ThenTheApiReturnsAnEntireCustomerDataList()
         {
-            var initialCustomerList = _scenarioContext.Get<List<Customer>>("InitialCustomerList");
+            var ApiCustomerList = _scenarioContext.Get<List<Customer>>("ApiCustomerList");
             var retrievedCustomerList = _scenarioContext.Get<List<Customer>>("RetrievedCustomerList");
-            Assert.That(initialCustomerList.Count == retrievedCustomerList.Count);
+            Assert.That(ApiCustomerList.Count == retrievedCustomerList.Count);
         }
 
         [When(@"I request an implementation of ICustomerService")]

@@ -74,15 +74,13 @@ namespace CustomersMetricsLoaderTests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Run the load runner")]
-        [NUnit.Framework.CategoryAttribute("unittest")]
-        public virtual void RunTheLoadRunner()
+        [NUnit.Framework.DescriptionAttribute("Run the loader runner (Update)")]
+        public virtual void RunTheLoaderRunnerUpdate()
         {
-            string[] tagsOfScenario = new string[] {
-                    "unittest"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Run the load runner", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 5
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Run the loader runner (Update)", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -102,20 +100,48 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
                             "id",
                             "name",
                             "representative",
                             "representative_email",
                             "representative_phone"});
-                table18.AddRow(new string[] {
+                table16.AddRow(new string[] {
                             "1",
                             "name",
                             "representative",
                             "representative_email",
                             "representative_phone"});
-#line 6
- testRunner.Given("I have these customers in my database", ((string)(null)), table18, "Given ");
+#line 5
+ testRunner.Given("I have an api that will return the following list of customer data", ((string)(null)), table16, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
+                            "id",
+                            "name",
+                            "representative",
+                            "representative_email",
+                            "representative_phone"});
+                table17.AddRow(new string[] {
+                            "1",
+                            "name",
+                            "representative",
+                            "representative_email",
+                            "representative_phone"});
+#line 8
+ testRunner.And("I have these customers in my database", ((string)(null)), table17, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table18 = new TechTalk.SpecFlow.Table(new string[] {
+                            "customer_id",
+                            "id",
+                            "name",
+                            "expression"});
+                table18.AddRow(new string[] {
+                            "1",
+                            "1",
+                            "name",
+                            "expression"});
+#line 11
+ testRunner.And("I have an api that will return the following list of metrics data", ((string)(null)), table18, "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
                             "customer_id",
@@ -127,20 +153,249 @@ this.ScenarioInitialize(scenarioInfo);
                             "1",
                             "name",
                             "expression"});
-#line 9
+#line 14
  testRunner.And("I have these metrics in my database", ((string)(null)), table19, "And ");
 #line hidden
-#line 12
+#line 17
  testRunner.And("I have a loader manager", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 13
+#line 18
  testRunner.And("I have a loader runner", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 14
+#line 19
  testRunner.When("I run the load runner", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 15
+#line 20
  testRunner.Then("all customers and metrics will be saved in the database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 21
+ testRunner.And("the number of added customers will be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 22
+ testRunner.And("the number of updated customers will be 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 23
+ testRunner.And("the number of added metrics will be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 24
+ testRunner.And("the number of updated metrics will be 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Run the loader runner (Add)")]
+        public virtual void RunTheLoaderRunnerAdd()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Run the loader runner (Add)", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 26
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
+                            "id",
+                            "name",
+                            "representative",
+                            "representative_email",
+                            "representative_phone"});
+                table20.AddRow(new string[] {
+                            "1",
+                            "name",
+                            "representative",
+                            "representative_email",
+                            "representative_phone"});
+#line 27
+ testRunner.Given("I have an api that will return the following list of customer data", ((string)(null)), table20, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
+                            "id",
+                            "name",
+                            "representative",
+                            "representative_email",
+                            "representative_phone"});
+#line 30
+ testRunner.And("I have these customers in my database", ((string)(null)), table21, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table22 = new TechTalk.SpecFlow.Table(new string[] {
+                            "customer_id",
+                            "id",
+                            "name",
+                            "expression"});
+                table22.AddRow(new string[] {
+                            "1",
+                            "1",
+                            "name",
+                            "expression"});
+#line 32
+ testRunner.And("I have an api that will return the following list of metrics data", ((string)(null)), table22, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table23 = new TechTalk.SpecFlow.Table(new string[] {
+                            "customer_id",
+                            "id",
+                            "name",
+                            "expression"});
+#line 35
+ testRunner.And("I have these metrics in my database", ((string)(null)), table23, "And ");
+#line hidden
+#line 37
+ testRunner.And("I have a loader manager", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 38
+ testRunner.And("I have a loader runner", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 39
+ testRunner.When("I run the load runner", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 40
+ testRunner.Then("all customers and metrics will be saved in the database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 41
+ testRunner.And("the number of added customers will be 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 42
+ testRunner.And("the number of updated customers will be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 43
+ testRunner.And("the number of added metrics will be 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 44
+ testRunner.And("the number of updated metrics will be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Run the loader runner (Add and Update)")]
+        public virtual void RunTheLoaderRunnerAddAndUpdate()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Run the loader runner (Add and Update)", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 46
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table24 = new TechTalk.SpecFlow.Table(new string[] {
+                            "id",
+                            "name",
+                            "representative",
+                            "representative_email",
+                            "representative_phone"});
+                table24.AddRow(new string[] {
+                            "1",
+                            "name",
+                            "representative",
+                            "representative_email",
+                            "representative_phone"});
+                table24.AddRow(new string[] {
+                            "2",
+                            "name",
+                            "representative",
+                            "representative_email",
+                            "representative_phone"});
+#line 47
+ testRunner.Given("I have an api that will return the following list of customer data", ((string)(null)), table24, "Given ");
+#line hidden
+                TechTalk.SpecFlow.Table table25 = new TechTalk.SpecFlow.Table(new string[] {
+                            "id",
+                            "name",
+                            "representative",
+                            "representative_email",
+                            "representative_phone"});
+                table25.AddRow(new string[] {
+                            "1",
+                            "name",
+                            "representative",
+                            "representative_email",
+                            "representative_phone"});
+#line 51
+ testRunner.And("I have these customers in my database", ((string)(null)), table25, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table26 = new TechTalk.SpecFlow.Table(new string[] {
+                            "customer_id",
+                            "id",
+                            "name",
+                            "expression"});
+                table26.AddRow(new string[] {
+                            "1",
+                            "1",
+                            "name",
+                            "expression"});
+#line 54
+ testRunner.And("I have an api that will return the following list of metrics data", ((string)(null)), table26, "And ");
+#line hidden
+                TechTalk.SpecFlow.Table table27 = new TechTalk.SpecFlow.Table(new string[] {
+                            "customer_id",
+                            "id",
+                            "name",
+                            "expression"});
+                table27.AddRow(new string[] {
+                            "1",
+                            "1",
+                            "name",
+                            "expression"});
+#line 57
+ testRunner.And("I have these metrics in my database", ((string)(null)), table27, "And ");
+#line hidden
+#line 60
+ testRunner.And("I have a loader manager", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 61
+ testRunner.And("I have a loader runner", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 62
+ testRunner.When("I run the load runner", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 63
+ testRunner.Then("all customers and metrics will be saved in the database", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+#line 64
+ testRunner.And("the number of added customers will be 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 65
+ testRunner.And("the number of updated customers will be 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 66
+ testRunner.And("the number of added metrics will be 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 67
+ testRunner.And("the number of updated metrics will be 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             }
             this.ScenarioCleanup();

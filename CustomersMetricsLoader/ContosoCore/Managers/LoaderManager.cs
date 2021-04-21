@@ -24,16 +24,30 @@ namespace ContosoCore.Managers
             _context = context;
         }
 
+        /// <summary>
+        /// Retrieve all the customers from the Customer Service API
+        /// </summary>
+        /// <returns>List of Customers</returns>
         public async Task<List<Customer>> GetAllCustomers()
         {
             return await _customerService.GetListAsync();
         }
 
-        public async Task<List<Metrics>> GetMetricsListForCustomerId(int id)
+        /// <summary>
+        /// Retrieve all the metrics for a specific customer id for the Metrics Service API
+        /// </summary>
+        /// <param name="customer_id">Customer Id</param>
+        /// <returns>List of Metrics</returns>
+        public async Task<List<Metrics>> GetMetricsListForCustomerId(int customer_id)
         {
-            return await _metricsService.GetListForCustomerId(id);
+            return await _metricsService.GetListForCustomerId(customer_id);
         }
 
+        /// <summary>
+        /// Save all customers in the passed customer list into the "caching" database
+        /// </summary>
+        /// <param name="customers">List of Customers</param>
+        /// <returns></returns>
         public async Task SaveAllCustomers(List<Customer> customers)
         {
             try
@@ -57,7 +71,7 @@ namespace ContosoCore.Managers
 
                 await _context.SaveChangesAsync();
 
-                _logger.LogInformation($"Customers - Added: {added} | Updated {updated}");
+                _logger.LogInformation($"Customers - Added: {added} | Updated: {updated}");
             }
             catch (Exception ex)
             {
@@ -65,6 +79,11 @@ namespace ContosoCore.Managers
             }
         }
 
+        /// <summary>
+        /// Same all metrics in the passed metrics list into the "caching" database
+        /// </summary>
+        /// <param name="metricsList"></param>
+        /// <returns></returns>
         public async Task SaveAllMetrics(List<Metrics> metricsList)
         {
             try
@@ -88,7 +107,7 @@ namespace ContosoCore.Managers
 
                 await _context.SaveChangesAsync();
 
-                _logger.LogInformation($"Metrics - Added: {added} | Updated {updated}");
+                _logger.LogInformation($"Metrics - Added: {added} | Updated: {updated}");
             }
             catch (Exception ex)
             {

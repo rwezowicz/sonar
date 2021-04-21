@@ -18,6 +18,10 @@ namespace CustomersMetricsLoader.Runners
             _manager = manager;
         }
 
+        /// <summary>
+        /// Run the Local Database Load of Customers and Metrics from API Requests
+        /// </summary>
+        /// <returns></returns>
         public async Task Run()
         {
             _logger.LogInformation($"LoaderManager Started at {DateTime.UtcNow}");

@@ -21,6 +21,11 @@ namespace ContosoCore.Services
             _endPoint = config["SonarApi:MetricsEndpoint"];
         }
 
+        /// <summary>
+        /// Get a list of all metrics for the passed customer id
+        /// </summary>
+        /// <param name="id">Customer Id</param>
+        /// <returns>List of Metrics</returns>
         public async Task<List<Metrics>> GetListForCustomerId(int id)
         {
             var list = await _client.GetStringAsync($"{_endPoint}?customer_id={id}");
@@ -28,6 +33,11 @@ namespace ContosoCore.Services
             return JsonConvert.DeserializeObject<List<Metrics>>(list);
         }
 
+        /// <summary>
+        /// Retrieve an implementation of IMetricsService based on DI
+        /// </summary>
+        /// <param name="sp">Service Provider</param>
+        /// <returns>MetricsService Object</returns>
         public static IMetricsService GetImplementation(IServiceProvider sp)
         {
             var config = sp.GetRequiredService<IConfigurationRoot>();

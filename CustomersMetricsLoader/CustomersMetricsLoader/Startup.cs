@@ -15,8 +15,6 @@ namespace CustomersMetricsLoader
     {
         private IConfigurationRoot Configuration { get; }
 
-        private const string HttpClientName = "ContosoHttpClient";
-
         public Startup()
         {
             var builder = new ConfigurationBuilder()
@@ -40,7 +38,7 @@ namespace CustomersMetricsLoader
 
             services.AddSingleton(Configuration);
 
-            services.AddHttpClient(HttpClientName,
+            services.AddHttpClient("ContosoHttpClient",
                 ctx =>
                 {
                     var baseUrl = Configuration["SonarApi:BaseUrl"];

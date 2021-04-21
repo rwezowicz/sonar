@@ -22,18 +22,10 @@ namespace CustomersMetricsLoaderTests.StepDefinitions
             _scenarioContext = scenarioContext;
         }
 
-        [Given(@"I have a list of metrics data")]
-        public void GivenIHaveAListOfMetricsData(Table table)
-        {
-            var metric = table.CreateSet<Metrics>().ToList();
-
-            _scenarioContext["InitialMetric"] = metric;
-        }
-
         [Given(@"I have a metrics service")]
         public void GivenIHaveAMetricsService()
         {
-            var metric = _scenarioContext.Get<List<Metrics>>("InitialMetric");
+            var metric = _scenarioContext.Get<List<Metrics>>("ApiMetricsList");
             var client = TestHelpers.GenerateHttpClientMock(metric);
             var config = _scenarioContext.Get<IConfigurationRoot>("TestConfiguration");
             _scenarioContext["MetricsService"] = new MetricsService(client, config);
@@ -47,8 +39,8 @@ namespace CustomersMetricsLoaderTests.StepDefinitions
             _scenarioContext["RetrievedMetricListForCustomer"] = metric;
         }
 
-        [Then(@"the following metric is returned")]
-        public void ThenTheFollowingMetricIsReturned(Table table)
+        [Then(@"the api returns the following metric is returned")]
+        public void ThenTheApiReturnsTheFollowingMetricIsReturned(Table table)
         {
             var retrievedMetricList = _scenarioContext.Get<List<Metrics>>("RetrievedMetricListForCustomer");
 

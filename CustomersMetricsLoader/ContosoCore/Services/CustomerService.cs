@@ -20,12 +20,21 @@ namespace ContosoCore.Services
             _endPoint = config["SonarApi:CustomerEndpoint"];
         }
 
+        /// <summary>
+        /// Get a list of all customer
+        /// </summary>
+        /// <returns>List of Customers</returns>
         public async Task<List<Customer>> GetListAsync()
         {
             var list = await _client.GetStringAsync(_endPoint);
             return JsonConvert.DeserializeObject<List<Customer>>(list);
         }
 
+        /// <summary>
+        /// Retrieve an implementation of ICustomerService based on DI
+        /// </summary>
+        /// <param name="sp">Service Provider</param>
+        /// <returns>CustomerService Object</returns>
         public static ICustomerService GetImplementation(IServiceProvider sp)
         {
             var config = sp.GetRequiredService<IConfigurationRoot>();

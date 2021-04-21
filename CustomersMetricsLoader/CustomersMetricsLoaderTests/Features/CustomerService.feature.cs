@@ -74,15 +74,13 @@ namespace CustomersMetricsLoaderTests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Confirm Successful Request for Customer Service Data")]
-        [NUnit.Framework.CategoryAttribute("unittest")]
-        public virtual void ConfirmSuccessfulRequestForCustomerServiceData()
+        [NUnit.Framework.DescriptionAttribute("Confirm Successful Request for Customer Service Data from API")]
+        public virtual void ConfirmSuccessfulRequestForCustomerServiceDataFromAPI()
         {
-            string[] tagsOfScenario = new string[] {
-                    "unittest"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Confirm Successful Request for Customer Service Data", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 5
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Confirm Successful Request for Customer Service Data from API", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -102,29 +100,29 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
                             "id",
                             "name",
                             "representative",
                             "representative_email",
                             "representative_phone"});
-                table3.AddRow(new string[] {
+                table1.AddRow(new string[] {
                             "1",
                             "name",
                             "representative",
                             "representative_email",
                             "representative_phone"});
-#line 6
- testRunner.Given("I have a list of customer data", ((string)(null)), table3, "Given ");
+#line 5
+ testRunner.Given("I have an api that will return the following list of customer data", ((string)(null)), table1, "Given ");
 #line hidden
-#line 9
+#line 8
  testRunner.And("I have a customer service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 10
+#line 9
  testRunner.When("I request a list of all customer data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 11
- testRunner.Then("my entire customer data list is returns", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 10
+ testRunner.Then("the api returns an entire customer data list", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
@@ -132,14 +130,12 @@ this.ScenarioInitialize(scenarioInfo);
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Retrieve an implementation of ICustomerService")]
-        [NUnit.Framework.CategoryAttribute("unittest")]
         public virtual void RetrieveAnImplementationOfICustomerService()
         {
-            string[] tagsOfScenario = new string[] {
-                    "unittest"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Retrieve an implementation of ICustomerService", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 14
+#line 12
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -159,13 +155,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 15
+#line 13
  testRunner.Given("I have a service collection", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 16
+#line 14
  testRunner.When("I request an implementation of ICustomerService", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 17
+#line 15
  testRunner.Then("I receive a CustomerService object", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

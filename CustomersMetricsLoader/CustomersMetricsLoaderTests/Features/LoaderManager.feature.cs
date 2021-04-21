@@ -75,14 +75,120 @@ namespace CustomersMetricsLoaderTests.Features
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Get All Customers")]
-        [NUnit.Framework.CategoryAttribute("unittest")]
         public virtual void GetAllCustomers()
         {
-            string[] tagsOfScenario = new string[] {
-                    "unittest"};
+            string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get All Customers", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 4
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "id",
+                            "name",
+                            "representative",
+                            "representative_email",
+                            "representative_phone"});
+                table2.AddRow(new string[] {
+                            "1",
+                            "name",
+                            "representative",
+                            "representative_email",
+                            "representative_phone"});
 #line 5
+ testRunner.Given("I have an api that will return the following list of customer data", ((string)(null)), table2, "Given ");
+#line hidden
+#line 8
+ testRunner.And("I have a loader manager", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 9
+ testRunner.When("I request a list of all customers", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 10
+ testRunner.Then("all customers will be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Get A List of Metrics for a Customer")]
+        public virtual void GetAListOfMetricsForACustomer()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get A List of Metrics for a Customer", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 12
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "customer_id",
+                            "id",
+                            "name",
+                            "expression"});
+                table3.AddRow(new string[] {
+                            "1",
+                            "1",
+                            "name",
+                            "expression"});
+#line 13
+ testRunner.Given("I have an api that will return the following list of metrics data", ((string)(null)), table3, "Given ");
+#line hidden
+#line 16
+ testRunner.And("I have a loader manager", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 17
+ testRunner.When("I request a list of all metrics for customer id 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 18
+ testRunner.Then("all metrics will be returned for that customer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Save a list of customers (Update)")]
+        public virtual void SaveAListOfCustomersUpdate()
+        {
+            string[] tagsOfScenario = ((string[])(null));
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Save a list of customers (Update)", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 20
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -114,83 +220,45 @@ this.ScenarioInitialize(scenarioInfo);
                             "representative",
                             "representative_email",
                             "representative_phone"});
-#line 6
+#line 21
  testRunner.Given("I have these customers in my database", ((string)(null)), table4, "Given ");
 #line hidden
-#line 9
+#line 24
  testRunner.And("I have a loader manager", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 10
- testRunner.When("I request a list of all customers", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 11
- testRunner.Then("all customers will be returned", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Get A List of Metrics for a Customer")]
-        public virtual void GetAListOfMetricsForACustomer()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Get A List of Metrics for a Customer", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 13
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
                 TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
-                            "customer_id",
                             "id",
                             "name",
-                            "expression"});
+                            "representative",
+                            "representative_email",
+                            "representative_phone"});
                 table5.AddRow(new string[] {
                             "1",
-                            "1",
                             "name",
-                            "expression"});
-#line 14
- testRunner.Given("I have these metrics in my database", ((string)(null)), table5, "Given ");
+                            "representative",
+                            "representative_email",
+                            "representative_phone"});
+#line 25
+ testRunner.And("I want to update these customers", ((string)(null)), table5, "And ");
 #line hidden
-#line 17
- testRunner.And("I have a loader manager", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 28
+ testRunner.When("I save all the customer data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 18
- testRunner.When("I request a list of all metrics for customer id 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 19
- testRunner.Then("all metrics will be returned for that customer", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 29
+ testRunner.Then("the data will successfully save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Save a list of customers (Update)")]
-        public virtual void SaveAListOfCustomersUpdate()
+        [NUnit.Framework.DescriptionAttribute("Save a list of customers (Add)")]
+        public virtual void SaveAListOfCustomersAdd()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Save a list of customers (Update)", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 21
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Save a list of customers (Add)", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 31
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -216,16 +284,10 @@ this.ScenarioInitialize(scenarioInfo);
                             "representative",
                             "representative_email",
                             "representative_phone"});
-                table6.AddRow(new string[] {
-                            "1",
-                            "name",
-                            "representative",
-                            "representative_email",
-                            "representative_phone"});
-#line 22
+#line 32
  testRunner.Given("I have these customers in my database", ((string)(null)), table6, "Given ");
 #line hidden
-#line 25
+#line 34
  testRunner.And("I have a loader manager", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
@@ -240,13 +302,13 @@ this.ScenarioInitialize(scenarioInfo);
                             "representative",
                             "representative_email",
                             "representative_phone"});
-#line 26
+#line 35
  testRunner.And("I want to update these customers", ((string)(null)), table7, "And ");
 #line hidden
-#line 29
+#line 38
  testRunner.When("I save all the customer data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 30
+#line 39
  testRunner.Then("the data will successfully save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -254,13 +316,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Save a list of customers (Add)")]
-        public virtual void SaveAListOfCustomersAdd()
+        [NUnit.Framework.DescriptionAttribute("Unable to Save Customers")]
+        public virtual void UnableToSaveCustomers()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Save a list of customers (Add)", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 32
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Unable to Save Customers", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 41
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -286,10 +348,16 @@ this.ScenarioInitialize(scenarioInfo);
                             "representative",
                             "representative_email",
                             "representative_phone"});
-#line 33
+                table8.AddRow(new string[] {
+                            "1",
+                            "name",
+                            "representative",
+                            "representative_email",
+                            "representative_phone"});
+#line 42
  testRunner.Given("I have these customers in my database", ((string)(null)), table8, "Given ");
 #line hidden
-#line 35
+#line 45
  testRunner.And("I have a loader manager", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -304,27 +372,30 @@ this.ScenarioInitialize(scenarioInfo);
                             "representative",
                             "representative_email",
                             "representative_phone"});
-#line 36
+#line 46
  testRunner.And("I want to update these customers", ((string)(null)), table9, "And ");
 #line hidden
-#line 39
+#line 49
+ testRunner.And("the database isn\'t working correctly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 50
  testRunner.When("I save all the customer data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 40
- testRunner.Then("the data will successfully save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 51
+ testRunner.Then("the log will show \"error occurred when saving customers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Unable to Save Customers")]
-        public virtual void UnableToSaveCustomers()
+        [NUnit.Framework.DescriptionAttribute("Save a list of metrics (Update)")]
+        public virtual void SaveAListOfMetricsUpdate()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Unable to Save Customers", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 42
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Save a list of metrics (Update)", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 53
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -345,59 +416,52 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
                 TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                            "customer_id",
                             "id",
                             "name",
-                            "representative",
-                            "representative_email",
-                            "representative_phone"});
+                            "expression"});
                 table10.AddRow(new string[] {
                             "1",
+                            "1",
                             "name",
-                            "representative",
-                            "representative_email",
-                            "representative_phone"});
-#line 43
- testRunner.Given("I have these customers in my database", ((string)(null)), table10, "Given ");
+                            "expression"});
+#line 54
+ testRunner.Given("I have these metrics in my database", ((string)(null)), table10, "Given ");
 #line hidden
-#line 46
+#line 57
  testRunner.And("I have a loader manager", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                            "customer_id",
                             "id",
                             "name",
-                            "representative",
-                            "representative_email",
-                            "representative_phone"});
+                            "expression"});
                 table11.AddRow(new string[] {
                             "1",
+                            "1",
                             "name",
-                            "representative",
-                            "representative_email",
-                            "representative_phone"});
-#line 47
- testRunner.And("I want to update these customers", ((string)(null)), table11, "And ");
+                            "expression"});
+#line 58
+ testRunner.And("I want to update these metrics", ((string)(null)), table11, "And ");
 #line hidden
-#line 50
- testRunner.And("the database isn\'t working correctly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 61
+ testRunner.When("I save all the metrics data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 51
- testRunner.When("I save all the customer data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 52
- testRunner.Then("the log will show \"error occurred when saving customers\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 62
+ testRunner.Then("the data will successfully save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Save a list of metrics (Update)")]
-        public virtual void SaveAListOfMetricsUpdate()
+        [NUnit.Framework.DescriptionAttribute("Save a list of metrics (Add)")]
+        public virtual void SaveAListOfMetricsAdd()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Save a list of metrics (Update)", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 54
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Save a list of metrics (Add)", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 64
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -422,15 +486,10 @@ this.ScenarioInitialize(scenarioInfo);
                             "id",
                             "name",
                             "expression"});
-                table12.AddRow(new string[] {
-                            "1",
-                            "1",
-                            "name",
-                            "expression"});
-#line 55
+#line 65
  testRunner.Given("I have these metrics in my database", ((string)(null)), table12, "Given ");
 #line hidden
-#line 58
+#line 67
  testRunner.And("I have a loader manager", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -443,13 +502,13 @@ this.ScenarioInitialize(scenarioInfo);
                             "1",
                             "name",
                             "expression"});
-#line 59
+#line 68
  testRunner.And("I want to update these metrics", ((string)(null)), table13, "And ");
 #line hidden
-#line 62
+#line 71
  testRunner.When("I save all the metrics data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 63
+#line 72
  testRunner.Then("the data will successfully save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
@@ -457,13 +516,13 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Save a list of metrics (Add)")]
-        public virtual void SaveAListOfMetricsAdd()
+        [NUnit.Framework.DescriptionAttribute("Unable to Save Metrics")]
+        public virtual void UnableToSaveMetrics()
         {
             string[] tagsOfScenario = ((string[])(null));
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Save a list of metrics (Add)", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 65
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Unable to Save Metrics", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 74
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -488,10 +547,15 @@ this.ScenarioInitialize(scenarioInfo);
                             "id",
                             "name",
                             "expression"});
-#line 66
+                table14.AddRow(new string[] {
+                            "1",
+                            "1",
+                            "name",
+                            "expression"});
+#line 75
  testRunner.Given("I have these metrics in my database", ((string)(null)), table14, "Given ");
 #line hidden
-#line 68
+#line 78
  testRunner.And("I have a loader manager", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
                 TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -504,82 +568,16 @@ this.ScenarioInitialize(scenarioInfo);
                             "1",
                             "name",
                             "expression"});
-#line 69
+#line 79
  testRunner.And("I want to update these metrics", ((string)(null)), table15, "And ");
 #line hidden
-#line 72
- testRunner.When("I save all the metrics data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
-#line 73
- testRunner.Then("the data will successfully save", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            }
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Unable to Save Metrics")]
-        public virtual void UnableToSaveMetrics()
-        {
-            string[] tagsOfScenario = ((string[])(null));
-            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Unable to Save Metrics", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
-#line 75
-this.ScenarioInitialize(scenarioInfo);
-#line hidden
-            bool isScenarioIgnored = default(bool);
-            bool isFeatureIgnored = default(bool);
-            if ((tagsOfScenario != null))
-            {
-                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((this._featureTags != null))
-            {
-                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
-            }
-            if ((isScenarioIgnored || isFeatureIgnored))
-            {
-                testRunner.SkipScenario();
-            }
-            else
-            {
-                this.ScenarioStart();
-                TechTalk.SpecFlow.Table table16 = new TechTalk.SpecFlow.Table(new string[] {
-                            "customer_id",
-                            "id",
-                            "name",
-                            "expression"});
-                table16.AddRow(new string[] {
-                            "1",
-                            "1",
-                            "name",
-                            "expression"});
-#line 76
- testRunner.Given("I have these metrics in my database", ((string)(null)), table16, "Given ");
-#line hidden
-#line 79
- testRunner.And("I have a loader manager", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
-#line hidden
-                TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
-                            "customer_id",
-                            "id",
-                            "name",
-                            "expression"});
-                table17.AddRow(new string[] {
-                            "1",
-                            "1",
-                            "name",
-                            "expression"});
-#line 80
- testRunner.And("I want to update these metrics", ((string)(null)), table17, "And ");
-#line hidden
-#line 83
+#line 82
  testRunner.And("the database isn\'t working correctly", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 84
+#line 83
  testRunner.When("I save all the metrics data", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 85
+#line 84
  testRunner.Then("the log will show \"error occurred when saving metrics\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

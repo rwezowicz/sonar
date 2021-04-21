@@ -43,9 +43,39 @@ namespace CustomersMetricsLoaderTests.StepDefinitions
         [Then(@"all customers and metrics will be saved in the database")]
         public void ThenAllCustomersAndMetricsWillBeSavedInTheDatabase()
         {
-            var mockLogger = _scenarioContext.Get<Mock<ILogger<LoaderRunner>>>("MockLoggerLoaderRunner");
-            Assert.That(mockLogger.Invocations[0].ToString().Contains("LoaderManager Started"));
-            Assert.That(mockLogger.Invocations[1].ToString().Contains("LoaderManager Completed"));
+            var mockLoggerRunner = _scenarioContext.Get<Mock<ILogger<LoaderRunner>>>("MockLoggerLoaderRunner");
+            var mockLoggerManager = _scenarioContext.Get<Mock<ILogger<LoaderManager>>>("MockLoggerLoaderManager");
+            Assert.That(mockLoggerRunner.Invocations[0].ToString().Contains("LoaderManager Started"));
+            Assert.That(mockLoggerRunner.Invocations[1].ToString().Contains("LoaderManager Completed"));
         }
+
+        [Then(@"the number of added customers will be (.*)")]
+        public void ThenTheNumberOfAddedCustomersWillBe(int p0)
+        {
+            var mockLoggerManager = _scenarioContext.Get<Mock<ILogger<LoaderManager>>>("MockLoggerLoaderManager");
+            Assert.That(mockLoggerManager.Invocations[0].ToString().Contains($"Added: {p0}"));
+        }
+
+        [Then(@"the number of updated customers will be (.*)")]
+        public void ThenTheNumberOfUpdatedCustomersWillBe(int p0)
+        {
+            var mockLoggerManager = _scenarioContext.Get<Mock<ILogger<LoaderManager>>>("MockLoggerLoaderManager");
+            Assert.That(mockLoggerManager.Invocations[0].ToString().Contains($"Updated: {p0}"));
+        }
+
+        [Then(@"the number of added metrics will be (.*)")]
+        public void ThenTheNumberOfAddedMetricsWillBe(int p0)
+        {
+            var mockLoggerManager = _scenarioContext.Get<Mock<ILogger<LoaderManager>>>("MockLoggerLoaderManager");
+            Assert.That(mockLoggerManager.Invocations[1].ToString().Contains($"Added: {p0}"));
+        }
+
+        [Then(@"the number of updated metrics will be (.*)")]
+        public void ThenTheNumberOfUpdatedMetricsWillBe(int p0)
+        {
+            var mockLoggerManager = _scenarioContext.Get<Mock<ILogger<LoaderManager>>>("MockLoggerLoaderManager");
+            Assert.That(mockLoggerManager.Invocations[0].ToString().Contains($"Updated: {p0}"));
+        }
+
     }
 }

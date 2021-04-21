@@ -24,6 +24,20 @@ namespace CustomersMetricsLoaderTests.StepDefinitions
             _scenarioContext = scenarioContext;
         }
 
+        [Given(@"I have an api that will return the following list of metrics data")]
+        public void GivenIHaveAnApiThatWillReturnTheFollowingListOfMetricsData(Table table)
+        {
+            var metric = table.CreateSet<Metrics>().ToList();
+            _scenarioContext["ApiMetricsList"] = metric;
+        }
+
+        [Given(@"I have an api that will return the following list of customer data")]
+        public void GivenIHaveAnApiThatWillReturnTheFollowingListOfCustomerData(Table table)
+        {
+            var customerList = table.CreateSet<Customer>();
+            _scenarioContext["ApiCustomerList"] = customerList;
+        }
+
         [Given(@"I have a service collection")]
         public void GivenIHaveAServiceCollection()
         {
@@ -51,7 +65,6 @@ namespace CustomersMetricsLoaderTests.StepDefinitions
             _scenarioContext["CustomerDbSet"] = customerDbSet.Object;
         }
 
-
         [Given(@"I have these metrics in my database")]
         public void GivenIHaveTheseMetricsInMyDatabase(Table table)
         {
@@ -68,13 +81,11 @@ namespace CustomersMetricsLoaderTests.StepDefinitions
         [Given(@"I have a loader manager")]
         public void GivenIHaveALoaderManager()
         {
-            var customerList = new List<Customer> { new Customer { id = 1 } }.AsQueryable();
-            var metricsList = new List<Metrics> { new Metrics { id = 1 } }.AsQueryable();
-
             var mockLogger = new Mock<ILogger<LoaderManager>>();
 
             if (!_scenarioContext.TryGetValue("CustomerDbSet", out DbSet<Customer> customerDbSet))
             {
+                var customerList = new List<Customer> { new Customer { id = 1 } }.AsQueryable();
                 var mockCustomerDbSet = new Mock<DbSet<Customer>>();
                 mockCustomerDbSet.As<IQueryable<Customer>>().Setup(m => m.Provider).Returns(customerList.Provider);
                 mockCustomerDbSet.As<IQueryable<Customer>>().Setup(m => m.Expression).Returns(customerList.Expression);
@@ -85,6 +96,7 @@ namespace CustomersMetricsLoaderTests.StepDefinitions
 
             if (!_scenarioContext.TryGetValue("MetricsDbSet", out DbSet<Metrics> metricsDbSet))
             {
+                var metricsList = new List<Metrics> { new Metrics { id = 1 } }.AsQueryable();
                 var mockMetricsDbSet = new Mock<DbSet<Metrics>>();
                 mockMetricsDbSet.As<IQueryable<Metrics>>().Setup(m => m.Provider).Returns(metricsList.Provider);
                 mockMetricsDbSet.As<IQueryable<Metrics>>().Setup(m => m.Expression).Returns(metricsList.Expression);
@@ -93,15 +105,31 @@ namespace CustomersMetricsLoaderTests.StepDefinitions
                 metricsDbSet = mockMetricsDbSet.Object;
             }
 
+            if (!_scenarioContext.TryGetValue("ApiCustomerList", out List<Customer> apiCustomerList))
+            {
+                apiCustomerList = new List<Customer>
+                {
+                    new Customer {id = 1}
+                };
+            }
+
             var mockCustomerService = new Mock<ICustomerService>();
             mockCustomerService
                 .Setup(m => m.GetListAsync())
-                .ReturnsAsync(customerList.ToList());
+                .ReturnsAsync(apiCustomerList);
+
+            if (!_scenarioContext.TryGetValue("ApiMetricsList", out List<Metrics> apiMetricsList))
+            {
+                apiMetricsList = new List<Metrics>
+                {
+                    new Metrics {id = 1}
+                };
+            }
 
             var mockMetricsService = new Mock<IMetricsService>();
             mockMetricsService
                 .Setup(m => m.GetListForCustomerId(It.IsAny<int>()))
-                .ReturnsAsync(metricsList.ToList());
+                .ReturnsAsync(apiMetricsList);
 
             var mockCustomersMetricsDatabaseContext = new Mock<CustomersMetricsDatabaseContext>();
             mockCustomersMetricsDatabaseContext.Setup(c => c.SaveChangesAsync(It.IsAny<System.Threading.CancellationToken>())).Verifiable();
@@ -116,11 +144,11 @@ namespace CustomersMetricsLoaderTests.StepDefinitions
             );
 
             _scenarioContext["LoaderManager"] = manager;
-            _scenarioContext["CustomerListCount"] = customerList.Count();
-            _scenarioContext["MetricsListCount"] = metricsList.Count();
+            _scenarioContext["CustomerListCount"] = customerDbSet.Count();
+            _scenarioContext["MetricsListCount"] = metricsDbSet.Count();
 
-            _scenarioContext["CustomersMetricsDatabaseContext"] = mockCustomersMetricsDatabaseContext;
-            _scenarioContext["MockLoggerLoadManager"] = mockLogger;
+            _scenarioContext["MockCustomersMetricsDatabaseContext"] = mockCustomersMetricsDatabaseContext;
+            _scenarioContext["MockLoggerLoaderManager"] = mockLogger;
         }
     }
 }

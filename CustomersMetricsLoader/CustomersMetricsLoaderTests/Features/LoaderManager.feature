@@ -1,9 +1,8 @@
 ﻿Feature: LoaderManager
 	Tests for interactions with the Loader Manager
 
-@unittest
 Scenario: Get All Customers
-	Given I have these customers in my database
+	Given I have an api that will return the following list of customer data
 		| id | name | representative | representative_email | representative_phone |
 		| 1  | name | representative | representative_email | representative_phone |
 	And I have a loader manager
@@ -11,7 +10,7 @@ Scenario: Get All Customers
 	Then all customers will be returned
 
 Scenario: Get A List of Metrics for a Customer
-	Given I have these metrics in my database
+	Given I have an api that will return the following list of metrics data
 		| customer_id | id | name | expression |
 		| 1           | 1  | name | expression |
 	And I have a loader manager

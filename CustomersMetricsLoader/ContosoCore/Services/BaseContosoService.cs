@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace ContosoCore.Services
 {
-    public abstract class BaseContosoService : IContosoService
+    public abstract class BaseContosoService
     {
         protected readonly HttpClient _client;
         protected readonly IConfiguration _config;

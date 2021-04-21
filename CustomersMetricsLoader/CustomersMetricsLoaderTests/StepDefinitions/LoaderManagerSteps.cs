@@ -26,7 +26,7 @@ namespace CustomersMetricsLoaderTests.StepDefinitions
         [Given(@"the database isn't working correctly")]
         public void GivenTheDatabaseIsnTWorkingCorrectly()
         {
-            var mockCustomersMetricsDatabaseContext = _scenarioContext.Get<Mock<CustomersMetricsDatabaseContext>>("CustomersMetricsDatabaseContext");
+            var mockCustomersMetricsDatabaseContext = _scenarioContext.Get<Mock<CustomersMetricsDatabaseContext>>("MockCustomersMetricsDatabaseContext");
 
             mockCustomersMetricsDatabaseContext
                 .Setup(c => c.SaveChangesAsync(It.IsAny<System.Threading.CancellationToken>()))
@@ -104,14 +104,14 @@ namespace CustomersMetricsLoaderTests.StepDefinitions
         [Then(@"the data will successfully save")]
         public void ThenTheDataWillSuccessfullySave()
         {
-            var dataContext = _scenarioContext.Get<Mock<CustomersMetricsDatabaseContext>>("CustomersMetricsDatabaseContext");
+            var dataContext = _scenarioContext.Get<Mock<CustomersMetricsDatabaseContext>>("MockCustomersMetricsDatabaseContext");
             dataContext.Verify(x => x.SaveChangesAsync(It.IsAny<System.Threading.CancellationToken>()));
         }
 
         [Then(@"the log will show ""(.*)""")]
         public void ThenTheLogWillShow(string error)
         {
-            var mockLogger = _scenarioContext.Get<Mock<ILogger<LoaderManager>>>("MockLoggerLoadManager");
+            var mockLogger = _scenarioContext.Get<Mock<ILogger<LoaderManager>>>("MockLoggerLoaderManager");
             Assert.That(mockLogger.Invocations[0].ToString().Contains(error));
         }
     }
