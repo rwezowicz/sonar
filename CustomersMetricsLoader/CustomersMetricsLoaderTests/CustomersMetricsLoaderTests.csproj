@@ -8,6 +8,8 @@
 
   <ItemGroup>
     <SpecFlowObsoleteCodeBehindFiles Remove="Features\CustomerService - Copy.feature.cs" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\LoaderManager - Copy.feature.cs" />
+    <SpecFlowObsoleteCodeBehindFiles Remove="Features\LoaderRunner - Copy.feature.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -25,12 +27,26 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Features\Common.feature.cs">
+      <DependentUpon>Common.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Features\LoaderRunner.feature.cs">
+      <DependentUpon>LoaderRunner.feature</DependentUpon>
+    </Compile>
     <Compile Update="Features\MetricsService.feature.cs">
       <DependentUpon>MetricsService.feature</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <SpecFlowFeatureFiles Update="Features\Common.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Features\LoaderRunner.feature">
+      <Visible>$(UsingMicrosoftNETSdk)</Visible>
+      <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>
+    </SpecFlowFeatureFiles>
     <SpecFlowFeatureFiles Update="Features\MetricsService.feature">
       <Visible>$(UsingMicrosoftNETSdk)</Visible>
       <CodeBehindFile>%(RelativeDir)%(Filename).feature$(DefaultLanguageSourceExtension)</CodeBehindFile>

@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
-using ContosoCore.Managers;
 using CustomersMetricsLoader.Runners;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CustomersMetricsLoader
 {
-    class Program
+    public class Program
     {
         public static async Task Main(string[] args)
         {
@@ -26,8 +25,6 @@ namespace CustomersMetricsLoader
             {
                 Console.WriteLine($"Error Occurred {ex}");
             }
-
-            Console.ReadKey();
         }
     }
 }

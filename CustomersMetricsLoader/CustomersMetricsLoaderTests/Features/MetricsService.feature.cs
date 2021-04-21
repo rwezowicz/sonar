@@ -102,18 +102,18 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                             "customer_id",
                             "id",
                             "name",
                             "expression"});
-                table2.AddRow(new string[] {
+                table20.AddRow(new string[] {
                             "1",
                             "1",
                             "name",
                             "expression"});
 #line 6
- testRunner.Given("I have a list of metrics data", ((string)(null)), table2, "Given ");
+ testRunner.Given("I have a list of metrics data", ((string)(null)), table20, "Given ");
 #line hidden
 #line 9
  testRunner.And("I have a metrics service", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -121,18 +121,18 @@ this.ScenarioInitialize(scenarioInfo);
 #line 10
  testRunner.When("I request a list of metrics data for customer_id 1", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                TechTalk.SpecFlow.Table table21 = new TechTalk.SpecFlow.Table(new string[] {
                             "customer_id",
                             "id",
                             "name",
                             "expression"});
-                table3.AddRow(new string[] {
+                table21.AddRow(new string[] {
                             "1",
                             "1",
                             "name",
                             "expression"});
 #line 11
- testRunner.Then("the following metric is returned", ((string)(null)), table3, "Then ");
+ testRunner.Then("the following metric is returned", ((string)(null)), table21, "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

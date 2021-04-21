@@ -14,37 +14,14 @@ namespace ContosoCore.Managers
         private readonly ILogger _logger;
         private readonly ICustomerService _customerService;
         private readonly IMetricsService _metricsService;
+        private CustomersMetricsDatabaseContext _context;
 
-        public LoaderManager(ILogger<LoaderManager> logger, ICustomerService customerService, IMetricsService metricsService)
+        public LoaderManager(ILogger<LoaderManager> logger, ICustomerService customerService, IMetricsService metricsService, CustomersMetricsDatabaseContext context)
         {
             _logger = logger;
             _customerService = customerService;
             _metricsService = metricsService;
-        }
-
-        public async Task Run()
-        {
-            _logger.LogInformation($"LoaderManager Started at {DateTime.UtcNow}");
-
-            var customers = await _customerService.GetListAsync();
-
-            Console.WriteLine("--- Customers ---");
-            foreach (var customer in customers)
-            {
-                Console.WriteLine(customer.name);
-            }
-
-            var metrics = await _metricsService.GetListForCustomerId(1);
-
-            Console.WriteLine("--- Metrics ---");
-            foreach (var metric in metrics)
-            {
-                Console.WriteLine(metric.name);
-            }
-
-            Console.ReadKey();
-
-            _logger.LogInformation($"LoaderManager Completed at {DateTime.UtcNow}");
+            _context = context;
         }
 
         public async Task<List<Customer>> GetAllCustomers()
@@ -61,27 +38,24 @@ namespace ContosoCore.Managers
         {
             try
             {
-                int added = 0;
-                int updated = 0;
+                var added = 0;
+                var updated = 0;
 
-                using (var context = new CustomersMetricsDatabaseContext())
+                foreach (var customer in customers)
                 {
-                    foreach (var customer in customers)
+                    if (!_context.Customers.Any(x => x.id == customer.id))
                     {
-                        if (!context.Customers.Any(x => x.id == customer.id))
-                        {
-                            await context.Customers.AddAsync(customer);
-                            added++;
-                        }
-                        else
-                        {
-                            context.Customers.Update(customer);
-                            updated++;
-                        }
+                        await _context.Customers.AddAsync(customer);
+                        added++;
                     }
-
-                    await context.SaveChangesAsync();
+                    else
+                    {
+                        _context.Customers.Update(customer);
+                        updated++;
+                    }
                 }
+
+                await _context.SaveChangesAsync();
 
                 _logger.LogInformation($"Customers - Added: {added} | Updated {updated}");
             }
@@ -95,27 +69,24 @@ namespace ContosoCore.Managers
         {
             try
             {
-                int added = 0;
-                int updated = 0;
+                var added = 0;
+                var updated = 0;
 
-                using (var context = new CustomersMetricsDatabaseContext())
+                foreach (var metrics in metricsList)
                 {
-                    foreach (var metrics in metricsList)
+                    if (!_context.Metrics.Any(x => x.id == metrics.id))
                     {
-                        if (!context.Metrics.Any(x => x.id == metrics.id))
-                        {
-                            await context.Metrics.AddAsync(metrics);
-                            added++;
-                        }
-                        else
-                        {
-                            context.Metrics.Update(metrics);
-                            updated++;
-                        }
+                        await _context.Metrics.AddAsync(metrics);
+                        added++;
                     }
-
-                    await context.SaveChangesAsync();
+                    else
+                    {
+                        _context.Metrics.Update(metrics);
+                        updated++;
+                    }
                 }
+
+                await _context.SaveChangesAsync();
 
                 _logger.LogInformation($"Metrics - Added: {added} | Updated {updated}");
             }
